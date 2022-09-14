@@ -4,11 +4,10 @@ Cree una función que reciba una matriz(i.e., lista de listas) de tamaño nxm qu
 flecha va dirigida hacia el blanco. Retorna False si la flecha no va en dirección al blanco.
 '''
 import numpy as np
-
-m=[" ",">"," ","x"]
-tiro=[[" "," "," "," "],
-        [" ",">"," ","x"],
-        [" "," "," "," "]]
+matriz=np.zeros((3,4),int)
+for f in range(3):
+        for c in range(4):
+                matriz[f][c]=int(input(f"ingrese el valor de la ubicacion {f},{c}: ".format(f+1,c+1)))
 
 def es_tiro_al_blanco(matrix):
     index=np.where(matrix == "x")
@@ -19,4 +18,5 @@ def es_tiro_al_blanco(matrix):
 
 
 
-es_tiro_al_blanco(m)
+
+es_tiro_al_blanco()
