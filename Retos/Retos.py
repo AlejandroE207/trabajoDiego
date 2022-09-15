@@ -39,17 +39,24 @@ def sumar_diagonales():
         for f in range(filas):
                 for c in range(colum):
                         matriz[f][c]=int(input(f"Ingrese el valor de la ubicacion {f},{c}: ".format(f+1,c+1)))
+
+        print("\n***** REPRESENTACION GRAFICA *****\n",matriz,"\n")
         d1=0
+        d2=0
         for f in range(filas):
                 for c in range(colum):
                         if c==f:
-                                num=matriz[f][c]
-                                d1=d1+num
-        print("Suma diagonal 1: ",d1)
+                                numD1=matriz[f][c]
+                                d1=d1+numD1
+        print("Suma de la diagonal 1: ",d1)
 
         for f in range(filas):
-                for c in range(colum):
-                        print(matriz[f][(colum-1)-f])
+                numD2=(matriz[f][(colum-1)-f])
+                d2=d2+numD2
+
+        print("Suma de la diagonal 2: ",d2)
+        s=d1+d2
+        print("\nLa suma de ambas diagonales es: ",s)
 
 
 sumar_diagonales()
