@@ -1,22 +1,55 @@
-'''
-Cree una función que reciba una matriz(i.e., lista de listas) de tamaño nxm que contiene una
-"x"(objetivo) y ">" como una flecha hacia esa dirección. La función debe retornar True si la
-flecha va dirigida hacia el blanco. Retorna False si la flecha no va en dirección al blanco.
-'''
+#IMPORTACION DE LIBRERIAS AUXILIARES
 import numpy as np
-matriz=np.zeros((3,4),int)
-for f in range(3):
-        for c in range(4):
-                matriz[f][c]=int(input(f"ingrese el valor de la ubicacion {f},{c}: ".format(f+1,c+1)))
+def es_tiro_al_blanco():
+        #INICIO E INGRESO DEL TAMAÑO DE MATRIZ
+        print("********** RETO 1 (TIRO AL BLANCO) **********\n")
+        filas=int(input("Digite la cantidad de filas de la matriz: "))
+        colum=int(input("Digite la cantidad de columnas de la matriz: "))
+        #CREACION DE MATRIZ DE MANERA RAPIDA
+        print("\nNOTA: Por favor ingresar la 'x' del objetivo en mayuscula\n")
+        matriz=np.empty((filas,colum),dtype=str)
+        for f in range(filas):
+                for c in range(colum):
+                        matriz[f][c]=str(input(f"Ingrese el valor de la ubicacion {f},{c}: ".format(f+1,c+1)))
+        print("\n***** REPRESENTACIÓN GRAFICA *****\n",matriz)
+        #ANALISIS DE UBICACION DE LA FLECHA Y DEL OBJETIVO
+        for f in range(filas):
+                for c in range(colum):
+                        if matriz[f][c]==">":
+                                filaFlecha = f
+                                colFlecha = c
+                        if matriz[f][c]=="X":
+                                filaObj = f
+                                colObj = c
+        #TOMA DE DECISION DEPENDIENDO DE LA UBICACION DE LA FLECHA Y OBJETIVO
+        if((filaFlecha == filaObj)and(colObj>colFlecha)):
+                print("\n¡¡¡¡¡ RESULTADO !!!!!\n",True)
+        else:
+                print("\n¡¡¡¡¡ RESULTADO !!!!!\n",False)
 
-def es_tiro_al_blanco(matrix):
-    index=np.where(matrix == "x")
-    print(index)
-    for elem in matrix:
-        print(elem)
+#es_tiro_al_blanco()
+
+def sumar_diagonales():
+        print("\nNOTA: Por favor ingresar una matriz cuadrada\n")
+        filas=int(input("Digite la cantidad de filas de la matriz: "))
+        colum=int(input("Digite la cantidad de columnas de la matriz: "))
+        #CREACION DE MATRIZ DE MANERA RAPIDA
+
+        matriz=np.empty((filas,colum),dtype=int)
+        for f in range(filas):
+                for c in range(colum):
+                        matriz[f][c]=int(input(f"Ingrese el valor de la ubicacion {f},{c}: ".format(f+1,c+1)))
+        d1=0
+        for f in range(filas):
+                for c in range(colum):
+                        if c==f:
+                                num=matriz[f][c]
+                                d1=d1+num
+        print("Suma diagonal 1: ",d1)
+
+        for f in range(filas):
+                for c in range(colum):
+                        print(matriz[f][(colum-1)-f])
 
 
-
-
-
-es_tiro_al_blanco()
+sumar_diagonales()
