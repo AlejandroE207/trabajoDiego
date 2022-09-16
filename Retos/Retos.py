@@ -1,5 +1,6 @@
 #IMPORTACION DE LIBRERIAS AUXILIARES
 import numpy as np
+import math
 def es_tiro_al_blanco():
         #INICIO E INGRESO DEL TAMAÑO DE MATRIZ
         print("********** RETO 1 (TIRO AL BLANCO) **********\n")
@@ -59,4 +60,49 @@ def sumar_diagonales():
         print("\nLa suma de ambas diagonales es: ",s)
 
 
-sumar_diagonales()
+#sumar_diagonales()
+
+class Esfera:
+        radio=0
+        masa=0
+        def __init__(self, radio=0, masa=0):
+                self.radio=radio
+                self.masa=masa
+                self.volumen = 0
+                self.superficie =0
+                self.densidad=0
+        def get_radio(self):
+               # return "El radio de la esfera es: ",self.radio
+                return "El radio de la esfera es: {}".format(self.radio)
+                
+        def get_masa(self):
+                return "La masa de la esfera es: {}".format(self.masa)
+
+        def get_volumen(self):
+                self.volumen=(4/3)*math.pi*(self.radio**3)
+                return "El volumen de la esfera es: {}".format(round(self.volumen,2))
+
+        def get_area_superficie(self):
+                self.superficie=4*math.pi*(self.radio**2)
+                return "La superficie de la esfera es: {}".format(round(self.superficie,2))
+
+        def get_densidad(self):
+                self.densidad = self.masa/self.volumen
+                return "La densidad de la esfera es: {}".format(round(self.densidad,2))
+
+def crearEsfera():
+        print("***** CREACION DE ESFERA*****")
+        v=float(input("Digite el volumen de la esfera: "))
+        m=float(input("Digite la masa de la esfera: "))
+        e1=Esfera(v,m)
+        print("\n+++ INFORMACION DE LA ESFERA +++")
+        print(e1.get_radio())
+        print(e1.get_masa())
+        print(e1.get_volumen())
+        print(e1.get_area_superficie())
+        print(e1.get_densidad())
+
+crearEsfera()
+
+
+
